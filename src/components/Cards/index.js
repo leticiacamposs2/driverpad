@@ -1,8 +1,8 @@
 import React from 'react';
-import { Card } from 'antd';
+import { Card, Tag } from 'antd';
 import './styles.css';
 
-const Cards = ({ name, phone, birth, cnh, typeOfCnh, cpf, active, key }) => {
+const Cards = ({ name, phone, birth, cnh, typeOfCnh, cpf, active, color }) => {
 
     return (
         <div className="site-card-border-less-wrapper">
@@ -11,7 +11,7 @@ const Cards = ({ name, phone, birth, cnh, typeOfCnh, cpf, active, key }) => {
                 <p>{phone}</p>
                 <p>{birth}</p>
                 <p>{cnh} {typeOfCnh}</p>
-                <p>{cpf} {active}</p>
+                <p>{cpf} <Tag color={color}>{active}</Tag></p>
             </Card>
         </div>
     );

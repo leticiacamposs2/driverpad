@@ -3,8 +3,7 @@ import { Link, BrowserRouter } from "react-router-dom";
 import { Menu } from 'antd';
 import './styles.css';
 
-const Header = (props) => {
-    const { logo, logoname, alt } = props;
+const Header = () => {
     const [current, setCurrent] = useState('list-drivers');
 
     const handleClick = (e) => {
@@ -13,12 +12,7 @@ const Header = (props) => {
     }
 
     return (
-        <header {...props} id="header">
-            {/* <div className="logo">
-                <img alt={alt} src={logo} height={20}/>{" "}
-                <img alt={alt} src={logoname} height={14}/>
-            </div> */}
-
+        <header id="header">
             <BrowserRouter>
                 <Menu
                     onClick={handleClick} 
