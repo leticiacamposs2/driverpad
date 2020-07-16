@@ -1,0 +1,56 @@
+footer.dark {
+  background-color: #000;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+span {
+  color: rgba(255, 255, 255, 1);
+}
+
+.bottom-bar {
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  overflow: hidden;
+}
+
+footer {
+  clear: both;
+  font-size: 14px;
+  background: #fff;
+  position: relative;
+  z-index: 100;
+  color: #314659;
+  box-shadow: 0 1000px 0 1000px #fff;
+}
+
+div {
+  margin: 12px 0;
+}
+
+.footer-wrap {
+  position: relative;
+  padding: 86px padding-space 93px padding-space;
+}
+
+.bottom-bar {
+  border-top: 1px solid border-color;
+  text-align: right;
+  padding: 16px padding-space;
+  margin: 0;
+  line-height: 32px;
+}
+
+.home > footer > .footer-wrap {
+    width: 100%;
+    padding: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+.home > footer > .footer-wrap > .bottom-bar {
+  margin: auto;
+  max-width: 1200px;
+  padding: 16px 24px;
+}
+
+.bottom-bar {
+  border-top: none;
+}
