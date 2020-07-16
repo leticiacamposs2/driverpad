@@ -1,0 +1,4 @@
+.align-itens {
+    display: flex;
+    justify-content: space-between;
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from 'antd';
 import './styles.css';
 
-const Cards = ({ name, phone, birth, cnh, typeOfCnh, cpf, active }) => {
+const Cards = ({ name, phone, birth, cnh, typeOfCnh, cpf, active, key }) => {
 
     return (
         <div className="site-card-border-less-wrapper">

@@ -14,10 +14,10 @@ const Header = (props) => {
 
     return (
         <header {...props} id="header">
-            <div className="logo">
+            {/* <div className="logo">
                 <img alt={alt} src={logo} height={20}/>{" "}
                 <img alt={alt} src={logoname} height={14}/>
-            </div>
+            </div> */}
 
             <BrowserRouter>
                 <Menu
