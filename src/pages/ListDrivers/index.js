@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Switch, Spin, Row } from 'antd';
+import { Select, Spin, Row } from 'antd';
 import SearchDriver from '../../components/SearchDriver';
 import Cards from '../../components/Cards';
 import './styles.css';
 
+const { Option } = Select;
+
 const ListDrivers = () => {
-    const [checked, setChecked] = useState(true);
     const [drivers, setDrivers] = useState({});
     const [loading, setLoading] = useState(true);
+    const [selected, setSelected] = useState('both');
 
     useEffect(() => {
         fetch(`/drivers`)
@@ -16,11 +18,6 @@ const ListDrivers = () => {
             .catch(err => console.error(err, 'Nenhum motorista encontrado'))
             .finally(() => setLoading(false))
     }, [])
-
-    const onChange = (checked) => {
-        setChecked(checked);
-        console.log(`Ativo? ${checked}`);
-    }
 
     return (
         <section className="list-drivers">
@@ -33,8 +30,20 @@ const ListDrivers = () => {
             <Row className="align-itens">
                 <SearchDriver placeholder="Pesquise um motorista pelo nome" />
                 <Row>
-                    Listar motoristas ativos {" "}
-                    <Switch checked={checked} onChange={onChange} />
+                    Filtrar motoristas: {" "}
+                    <Select
+                        showSearch
+                        style={{ width: 120 }}
+                        optionFilterProp="children"
+                        onChange={(value) => setSelected(value)}
+                        filterOption={(input, option) =>
+                            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                        }
+                    >
+                        <Option value="both">Ambos</Option>
+                        <Option value="active">Ativo</Option>
+                        <Option value="inactive">Inativo</Option>
+                    </Select>
                 </Row>
             </Row>
             <Row>
