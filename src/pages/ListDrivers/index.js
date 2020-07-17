@@ -35,7 +35,10 @@ const ListDrivers = () => {
                         showSearch
                         style={{ width: 120 }}
                         optionFilterProp="children"
-                        onChange={(value) => setSelected(value)}
+                        onChange={(value) => {
+                            setSelected(value)
+                            console.log('selected', selected);
+                        }}
                         filterOption={(input, option) =>
                             option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                         }
