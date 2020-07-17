@@ -42,7 +42,7 @@ npm install
 4. Execute a aplicação
 
 ```
-npm start
+npm run dev
 ```
 
 5. Abra o navegador e visualize o projeto no seguinte endereço:
@@ -50,3 +50,16 @@ npm start
 ```
 http://localhost:3000
 ```
+
+----
+
+### 🔥 API Fake
+
+Ao executar a aplicação seguindo os passos acima, a biblioteca Json Server irá simular uma API REST com o conteúdo do arquivo json [db.json](./db.json) deste projeto, que ficará disponível em http://localhost:5000
+
+
+Método   | Endpoint   | Descrição
+--------- | ------ | ------
+GET | /drivers | Lista todos os motoristas
+
+

@@ -1,0 +1,54 @@
+{
+  "drivers": [
+    {
+      "id": 1,
+      "name": "Isabelle Olivia Viana",
+      "phone": "(41) 3956-2310",
+      "birth": "10/08/1999",
+      "cnh": 36139357657,
+      "typeOfcnh": "B",
+      "cpf": "194.280.956-56",
+      "active": false
+    },
+    {
+      "id": 2,
+      "name": "Bruna Clara Teixeira",
+      "phone": "(83) 2837-4629",
+      "birth": "11/04/1952",
+      "cnh": 78180800381,
+      "typeOfcnh": "D",
+      "cpf": "894.149.688-81",
+      "active": true
+    },
+    {
+      "id": 3,
+      "name": "Roberto Breno Cardoso",
+      "phone": "(21) 2739-7727",
+      "birth": "27/01/1995",
+      "cnh": 58397370101,
+      "typeOfcnh": "A",
+      "cpf": "700.883.748-82",
+      "active": false
+    },
+    {
+      "id": 4,
+      "name": "Antonella Lorena Lúcia",
+      "phone": "(41) 3879-0696",
+      "birth": "25/08/1958",
+      "cnh": 78568771584,
+      "typeOfcnh": "B",
+      "cpf": "018.319.908-14",
+      "active": true
+    },
+    {
+      "id": 5,
+      "nome": "Bárbara Renata Figueiredo",
+      "phone": "(54) 3837-1244",
+      "birth": "12/09/1956",
+      "cnh": 77172296491,
+      "typeOfcnh": "A",
+      "cpf": "411.741.795-97",
+      "active": true
+    }
+  ]
+}
