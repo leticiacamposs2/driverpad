@@ -42,12 +42,22 @@
     },
     {
       "id": 5,
-      "nome": "Bárbara Renata Figueiredo",
+      "name": "Bárbara Figueiredo",
       "phone": "(54) 3837-1244",
       "birth": "12/09/1956",
       "cnh": 77172296491,
       "typeOfcnh": "A",
       "cpf": "411.741.795-97",
+      "active": true
+    },
+    {
+      "id": 6,
+      "name": "Caio Jorge da Mata",
+      "phone": "(68) 2676-8870",
+      "birth": "06/01/1974",
+      "cnh": 252931889,
+      "typeOfcnh": "C",
+      "cpf": "590.612.660-09",
       "active": true
     }
   ]

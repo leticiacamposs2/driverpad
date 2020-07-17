@@ -24,33 +24,36 @@ const ListDrivers = () => {
 
     return (
         <section className="list-drivers">
-            <Row className="align-itens">
-                    <SearchDriver placeholder="Pesquise um motorista pelo nome"/>
-                    <Row>
-                        Listar motoristas ativos {" "}
-                    <Switch checked={checked} onChange={onChange} />
-                    </Row>
-            </Row>
             {loading ? 
                 <div className="loading-drivers">
                     <Spin size="large" tip="Buscando motoristas..."/> 
                 </div>
-            :   <Row>
-                    {drivers.map(driver => (
-                        <Cards
-                            key={driver.id}
-                            name={driver.name}
-                            phone={`Telefone: ${driver.phone}`}
-                            birth={`Nascimento: ${driver.birth}`}
-                            cnh={`CNH: ${driver.cnh}`}
-                            typeOfCnh={`Tipo: ${driver.typeOfCnh}`}
-                            cpf={`CPF: ${driver.cpf}`}
-                            active={driver.active ? 'ativo' : 'inativo'}
-                            color={driver.active ? 'green' : 'magenta'}
-                        />
-                    ))}
+            :
+            <>
+            <Row className="align-itens">
+                <SearchDriver placeholder="Pesquise um motorista pelo nome" />
+                <Row>
+                    Listar motoristas ativos {" "}
+                    <Switch checked={checked} onChange={onChange} />
                 </Row>
-                }              
+            </Row>
+            <Row>
+                {drivers.map(driver => (
+                    <Cards
+                        key={driver.id}
+                        name={driver.name}
+                        phone={`Telefone: ${driver.phone}`}
+                        birth={`Nascimento: ${driver.birth}`}
+                        cnh={`CNH: ${driver.cnh}`}
+                        typeOfCnh={`Tipo: ${driver.typeOfCnh}`}
+                        cpf={`CPF: ${driver.cpf}`}
+                        active={driver.active ? 'ativo' : 'inativo'}
+                        color={driver.active ? 'green' : 'magenta'}
+                    />
+                ))}
+            </Row>
+            </>
+            }              
         </section>
     );
 };
