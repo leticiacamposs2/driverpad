@@ -12,9 +12,9 @@
     },
     {
       "id": 2,
-      "name": "Bruna Clara Teixeira",
+      "name": "Bruna Clara Pereira",
       "phone": "(83) 2837-4629",
-      "birth": "04/11/2000",
+      "birth": "11/04/2000",
       "cnh": 78180800381,
       "typeOfCnh": "D",
       "cpf": "894.149.688-81",
@@ -59,6 +59,16 @@
       "typeOfCnh": "C",
       "cpf": "590.612.660-09",
       "active": true
+    },
+    {
+      "name": "João Lucas Ferreira",
+      "phone": "(11) 9999-9999",
+      "birth": "05/09/2001",
+      "cnh": "15484545488",
+      "typeOfCnh": "B",
+      "cpf": "45458458455",
+      "active": true,
+      "id": 7
     }
   ]
 }
