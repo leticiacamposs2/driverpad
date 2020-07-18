@@ -65,4 +65,9 @@ GET | /drivers/true | Lista todos os motoristas ativos quando o parâmetro for t
 POST | /drivers | Salva um motorista
 PUT | /drivers/1 | Edita um motorista
 
+----
 
+### 🔮 Próximos passos
+
+- Consulte aqui em: [issues](https://github.com/leticiacamposs2/driverpad/issues) 
+- Planejamento no quadro: [kanban](https://github.com/leticiacamposs2/driverpad/projects/1)

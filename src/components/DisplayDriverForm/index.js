@@ -31,7 +31,7 @@ const DisplayDriverForm = ({ handleSubmit, values, submitCount }) => (
                 label="Telefone"
                 validate={isRequired}
                 submitCount={submitCount}
-                maxLength={13}
+                maxLength={14}
                 hasFeedback
             />
             <Row>
@@ -83,7 +83,7 @@ const DisplayDriverForm = ({ handleSubmit, values, submitCount }) => (
             <div className="submit-container">
                 <button className="ant-btn ant-btn-primary" type="submit">
                     Salvar
-        </button>
+                </button>
             </div>
         </Form>
     </Col>
