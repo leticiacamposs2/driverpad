@@ -1,22 +1,13 @@
-import React, { useState } from 'react';
-import { Link, BrowserRouter } from "react-router-dom";
+import React from 'react';
+import { Link, BrowserRouter } from 'react-router-dom';
 import { Menu } from 'antd';
 import './styles.css';
 
 const Header = () => {
-    const [current, setCurrent] = useState('list-drivers');
-
-    const handleClick = (e) => {
-        console.log('click ', e);
-        setCurrent(e.key);
-    }
-
     return (
         <header id="header">
-            <BrowserRouter>
+            <BrowserRouter forceRefresh={true}>
                 <Menu
-                    onClick={handleClick} 
-                    selectedKeys={[current]}
                     mode="horizontal" 
                     theme="light"
                 >
@@ -27,7 +18,7 @@ const Header = () => {
 
                     <Menu.Item key="new-driver">
                         Adicionar motorista
-                        <Link to="/novo-motorista" />
+                        <Link to="/cadastro-de-motorista" />
                     </Menu.Item>
                 </Menu>
             </BrowserRouter>

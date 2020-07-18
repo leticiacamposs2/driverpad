@@ -62,6 +62,7 @@ Método   | Endpoint   | Descrição
 --------- | ------ | ------
 GET | /drivers | Lista todos os motoristas
 GET | /drivers/true | Lista todos os motoristas ativos quando o parâmetro for true; inativos quando o parâmetro for falso
+GET | /drivers/1 | Lista o motorista especifico
 POST | /drivers | Salva um motorista
 PUT | /drivers/1 | Edita um motorista
 
