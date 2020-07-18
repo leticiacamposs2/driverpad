@@ -65,6 +65,7 @@ Método   | Endpoint   | Descrição
 GET | /drivers | Lista todos os motoristas
 GET | /drivers/1 | Lista o motorista especifico
 POST | /drivers | Salva um motorista
+PUT | /drivers/1 | Edita um motorista
 
 ----
 
