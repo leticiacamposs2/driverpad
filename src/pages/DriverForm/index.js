@@ -1,41 +1,63 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
+import { notification } from 'antd';
 import { Formik } from 'formik';
-import DisplayDriverForm from '../../components/DisplayDriverForm';
-import { dateFormat} from '../../components/FieldFormats';
 import moment from 'moment';
+import { dateFormat} from '../../components/FieldFormats';
+import DisplayDriverForm from '../../components/DisplayDriverForm';
 
-const initialValues = {
-    name: "",
-    phone: "",
-    birthDate: moment(Date.now()),
-    cnh: "",
-    typeOfCnh: "",
-    selectOptions: ["A", "B", "C", "D"],
-    cpf: ""
-};
-
-export default class DriverForm extends PureComponent {
-    handleSubmit = formProps => {
-        const { name, phone, birthDate, cnh, typeOfCnh, cpf } = formProps;
-        const selectedDate = moment(birthDate).format(dateFormat);
-        alert(`
-            Nome: ${name}
-            Telefone: ${phone}
-            Nascimento: ${selectedDate}
-            CNH: ${cnh}
-            Tipo de CNH: ${typeOfCnh}
-            CPF: ${cpf}`
-        );
+const DriverForm = () => {
+    const initialValues = {
+        name: "",
+        phone: "",
+        birthDate: moment(Date.now()),
+        cnh: "",
+        typeOfCnh: "",
+        selectOptions: ["A", "B", "C", "D"],
+        cpf: ""
     };
 
-    render = () => (
+    const handleSubmit = (formProps) => {
+        const { name, phone, birthDate, cnh, typeOfCnh, cpf } = formProps;
+        const selectedDate = moment(birthDate).format(dateFormat);
+
+        fetch(`/drivers`, {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(
+                {
+                    "name": name,
+                    "phone": phone,
+                    "birthDate": selectedDate,
+                    "cnh": cnh,
+                    "typeOfCnh": typeOfCnh,
+                    "cpf": cpf,
+                    "active": true,
+                }
+            )
+        })
+
+        openNotification();
+    };
+
+    const openNotification = () => {
+        notification.open({
+            message: 'Motorista cadastrado com sucesso!',
+        });
+    };
+
+    return(
         <>
         <h1>Motorista</h1>
         <Formik
             initialValues={initialValues}
-            onSubmit={this.handleSubmit}
+            onSubmit={handleSubmit}
             render={DisplayDriverForm}
         />
         </>
     );
 }
+
+export default DriverForm;
