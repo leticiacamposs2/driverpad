@@ -1,15 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Select, Spin, Row } from 'antd';
-import SearchDriver from '../../components/SearchDriver';
+import { Spin, Row } from 'antd';
 import Cards from '../../components/Cards';
 import './styles.css';
-
-const { Option } = Select;
 
 const ListDrivers = () => {
     const [drivers, setDrivers] = useState({});
     const [loading, setLoading] = useState(true);
-    const [selected, setSelected] = useState('both');
 
     useEffect(() => {
         fetch(`/drivers`)
@@ -27,28 +23,6 @@ const ListDrivers = () => {
                 </div>
             :
             <>
-            <Row className="align-itens">
-                <SearchDriver placeholder="Pesquise um motorista pelo nome" />
-                <Row>
-                    Filtrar motoristas: {" "}
-                    <Select
-                        showSearch
-                        style={{ width: 120 }}
-                        optionFilterProp="children"
-                        onChange={(value) => {
-                            setSelected(value)
-                            console.log('selected', selected);
-                        }}
-                        filterOption={(input, option) =>
-                            option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                        }
-                    >
-                        <Option value="both">Ambos</Option>
-                        <Option value="active">Ativo</Option>
-                        <Option value="inactive">Inativo</Option>
-                    </Select>
-                </Row>
-            </Row>
             <Row className="container">
                 {drivers.map(driver => (
                     <Cards
