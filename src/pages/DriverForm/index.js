@@ -19,38 +19,67 @@ const DriverForm = () => {
         cnh: "",
         typeOfCnh: "",
         selectOptions: ["A", "B", "C", "D"],
-        cpf: ""
+        cpf: "",
+        active: true
     };
 
     const handleSubmit = (formProps) => {
-        const { name, phone, birth, cnh, typeOfCnh, cpf } = formProps;
+        const { name, phone, birth, cnh, typeOfCnh, cpf, active } = formProps;
         const selectedDate = moment(birth).format(dateFormat);
 
-        fetch(`/drivers`, {
-            method: "POST",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(
-                {
-                    "name": name,
-                    "phone": phone,
-                    "birth": selectedDate,
-                    "cnh": cnh,
-                    "typeOfCnh": typeOfCnh,
-                    "cpf": cpf,
-                    "active": true,
-                }
-            )
-        })
+        let type = '';
 
-        openNotification();
+        if(!id) {
+            fetch(`/drivers`, {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(
+                    {
+                        "name": name,
+                        "phone": phone,
+                        "birth": selectedDate,
+                        "cnh": cnh,
+                        "typeOfCnh": typeOfCnh,
+                        "cpf": cpf,
+                        "active": active,
+                    }
+                )
+            })
+
+            type = 'cadastrado';
+        } else {
+            fetch(`/drivers/${id}`, {
+                method: "PUT",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(
+                    {
+                        "id": id,
+                        "name": name,
+                        "phone": phone,
+                        "birth": selectedDate,
+                        "cnh": cnh,
+                        "typeOfCnh": typeOfCnh,
+                        "cpf": cpf,
+                        "active": active,
+                    }
+                )
+            })
+            
+            type = 'alterado';
+        }
+
+        openNotification(type);
     };
 
-    const openNotification = () => {
+    const openNotification = (type) => {
         notification.open({
-            message: 'Motorista cadastrado com sucesso!',
+            message: `Motorista ${type} com sucesso!`,
         });
     };
 

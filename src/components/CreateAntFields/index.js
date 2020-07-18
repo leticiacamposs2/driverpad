@@ -3,7 +3,8 @@ import {
     DatePicker,
     Form,
     Input,
-    Select
+    Select,
+    Checkbox
 } from 'antd';
 
 const FormItem = Form.Item;
@@ -55,3 +56,4 @@ const CreateAntField = AntComponent => ({
 export const AntSelect = CreateAntField(Select);
 export const AntDatePicker = CreateAntField(DatePicker);
 export const AntInput = CreateAntField(Input);
+export const AntCheckbox = CreateAntField(Checkbox);
