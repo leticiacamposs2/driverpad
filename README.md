@@ -2,6 +2,8 @@
 
 O DriverPad é uma aplicação desenvolvida para registrar motoristas de todo o Brasil.
 
+![demonstrativo da aplicação driverpad](./src/assets/gifs/driverpad.gif)
+
 ---
 
 ### 💻 Tecnologias e bibliotecas utilizadas

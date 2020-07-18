@@ -4,7 +4,8 @@ import { Form, Field } from 'formik';
 import {
     AntDatePicker,
     AntInput,
-    AntSelect
+    AntSelect,
+    AntCheckbox
 } from '../CreateAntFields';
 import { dateFormat } from '../FieldFormats';
 import {
@@ -78,6 +79,14 @@ const DisplayDriverForm = ({ handleSubmit, values, submitCount }) => (
                     maxLength={25}
                     style={{ width: 200 }}
                     hasFeedback
+                />
+                <Field
+                    component={AntCheckbox}
+                    name="active"
+                    type="active"
+                    label="Ativo?"
+                    defaultChecked={values.active}
+                    submitCount={submitCount}
                 />
             </Row>
             <div className="submit-container">

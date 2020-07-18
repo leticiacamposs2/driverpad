@@ -19,38 +19,67 @@ const DriverForm = () => {
         cnh: "",
         typeOfCnh: "",
         selectOptions: ["A", "B", "C", "D"],
-        cpf: ""
+        cpf: "",
+        active: true
     };
 
     const handleSubmit = (formProps) => {
-        const { name, phone, birth, cnh, typeOfCnh, cpf } = formProps;
+        const { name, phone, birth, cnh, typeOfCnh, cpf, active } = formProps;
         const selectedDate = moment(birth).format(dateFormat);
 
-        fetch(`/drivers`, {
-            method: "POST",
-            headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(
-                {
-                    "name": name,
-                    "phone": phone,
-                    "birth": selectedDate,
-                    "cnh": cnh,
-                    "typeOfCnh": typeOfCnh,
-                    "cpf": cpf,
-                    "active": true,
-                }
-            )
-        })
+        let type = '';
 
-        openNotification();
+        if(!id) {
+            fetch(`/drivers`, {
+                method: "POST",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(
+                    {
+                        "name": name,
+                        "phone": phone,
+                        "birth": selectedDate,
+                        "cnh": cnh,
+                        "typeOfCnh": typeOfCnh,
+                        "cpf": cpf,
+                        "active": active,
+                    }
+                )
+            })
+
+            type = 'cadastrado';
+        } else {
+            fetch(`/drivers/${id}`, {
+                method: "PUT",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(
+                    {
+                        "id": id,
+                        "name": name,
+                        "phone": phone,
+                        "birth": selectedDate,
+                        "cnh": cnh,
+                        "typeOfCnh": typeOfCnh,
+                        "cpf": cpf,
+                        "active": active,
+                    }
+                )
+            })
+            
+            type = 'alterado';
+        }
+
+        openNotification(type);
     };
 
-    const openNotification = () => {
+    const openNotification = (type) => {
         notification.open({
-            message: 'Motorista cadastrado com sucesso!',
+            message: `Motorista ${type} com sucesso!`,
         });
     };
 
@@ -58,7 +87,10 @@ const DriverForm = () => {
         id ?
             fetch(`/drivers/${id}`)
                 .then(res => res.json())
-                .then(res => setDriver(res))
+                .then(res => {
+                    res.birth = moment(res.birth, "DD/MM/YYYY")
+                    setDriver(res)
+                })
                 .catch(err => console.error(err, 'Nenhum motorista encontrado'))
                 .finally(() => setLoading(false))
         :
@@ -68,23 +100,19 @@ const DriverForm = () => {
     return(
         <>
         <h1>Motorista</h1>
-
-        {console.log(id)}
-        {console.log(driver.name)}
-
-            {loading ?
-                <div className="loading-drivers">
-                    <Spin size="large" tip={
-                        id ? 'Buscando motorista...' : 'Preparando formulário...' } 
-                    />
-                </div>
-                :   
-                <Formik
-                    initialValues={initialValues}
-                    onSubmit={handleSubmit}
-                    render={DisplayDriverForm}
+        {loading ?
+            <div className="loading-drivers">
+                <Spin size="large" tip={
+                    id ? 'Buscando motorista...' : 'Preparando formulário...' } 
                 />
-            }
+            </div>
+            :   
+            <Formik
+                initialValues={id ? driver : initialValues}
+                onSubmit={handleSubmit}
+                render={DisplayDriverForm}
+            />
+        }
         </>
     );
 }
