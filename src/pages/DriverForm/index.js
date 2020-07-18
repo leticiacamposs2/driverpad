@@ -9,7 +9,7 @@ const DriverForm = () => {
     const initialValues = {
         name: "",
         phone: "",
-        birthDate: moment(Date.now()),
+        birth: moment(Date.now()),
         cnh: "",
         typeOfCnh: "",
         selectOptions: ["A", "B", "C", "D"],
@@ -17,8 +17,8 @@ const DriverForm = () => {
     };
 
     const handleSubmit = (formProps) => {
-        const { name, phone, birthDate, cnh, typeOfCnh, cpf } = formProps;
-        const selectedDate = moment(birthDate).format(dateFormat);
+        const { name, phone, birth, cnh, typeOfCnh, cpf } = formProps;
+        const selectedDate = moment(birth).format(dateFormat);
 
         fetch(`/drivers`, {
             method: "POST",
@@ -30,7 +30,7 @@ const DriverForm = () => {
                 {
                     "name": name,
                     "phone": phone,
-                    "birthDate": selectedDate,
+                    "birth": selectedDate,
                     "cnh": cnh,
                     "typeOfCnh": typeOfCnh,
                     "cpf": cpf,
