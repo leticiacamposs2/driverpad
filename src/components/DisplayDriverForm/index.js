@@ -37,9 +37,9 @@ const DisplayDriverForm = ({ handleSubmit, values, submitCount }) => (
             <Row>
                 <Field
                     component={AntDatePicker}
-                    name="birthDate"
+                    name="birth"
                     label="Nascimento"
-                    defaultValue={values.birthDate}
+                    defaultValue={values.birth}
                     format={dateFormat}
                     validate={validateDate}
                     submitCount={submitCount}

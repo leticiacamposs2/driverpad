@@ -61,6 +61,7 @@ Ao executar a aplicação seguindo os passos acima, a biblioteca Json Server ir�
 Método   | Endpoint   | Descrição
 --------- | ------ | ------
 GET | /drivers | Lista todos os motoristas
+GET | /drivers/1 | Lista o motorista especifico
 POST | /drivers | Salva um motorista
 
 ----

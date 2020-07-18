@@ -10,7 +10,8 @@ function Routes() {
             <Switch>
                 <Route path="/" exact component={ListDrivers} />
                 <Route path="/listagem-de-motoristas" component={ListDrivers} />
-                <Route path="/novo-motorista" component={DriverForm} />
+                <Route path="/cadastro-de-motorista" component={DriverForm} />
+                <Route path="/editar-motorista/:id" component={DriverForm} />
                 <Route path="*" component={NotFound} />
             </Switch>
         </BrowserRouter>

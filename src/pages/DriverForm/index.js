@@ -1,15 +1,21 @@
-import React from 'react';
-import { notification } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { Spin, notification } from 'antd';
 import { Formik } from 'formik';
 import moment from 'moment';
 import { dateFormat} from '../../components/FieldFormats';
 import DisplayDriverForm from '../../components/DisplayDriverForm';
 
 const DriverForm = () => {
+
+    let { id } = useParams();
+    const [driver, setDriver] = useState({});
+    const [loading, setLoading] = useState(true);
+
     const initialValues = {
         name: "",
         phone: "",
-        birthDate: moment(Date.now()),
+        birth: moment(Date.now()),
         cnh: "",
         typeOfCnh: "",
         selectOptions: ["A", "B", "C", "D"],
@@ -17,8 +23,8 @@ const DriverForm = () => {
     };
 
     const handleSubmit = (formProps) => {
-        const { name, phone, birthDate, cnh, typeOfCnh, cpf } = formProps;
-        const selectedDate = moment(birthDate).format(dateFormat);
+        const { name, phone, birth, cnh, typeOfCnh, cpf } = formProps;
+        const selectedDate = moment(birth).format(dateFormat);
 
         fetch(`/drivers`, {
             method: "POST",
@@ -30,7 +36,7 @@ const DriverForm = () => {
                 {
                     "name": name,
                     "phone": phone,
-                    "birthDate": selectedDate,
+                    "birth": selectedDate,
                     "cnh": cnh,
                     "typeOfCnh": typeOfCnh,
                     "cpf": cpf,
@@ -48,14 +54,37 @@ const DriverForm = () => {
         });
     };
 
+    useEffect(() => {
+        id ?
+            fetch(`/drivers/${id}`)
+                .then(res => res.json())
+                .then(res => setDriver(res))
+                .catch(err => console.error(err, 'Nenhum motorista encontrado'))
+                .finally(() => setLoading(false))
+        :
+            setLoading(false)
+    }, [id])
+
     return(
         <>
         <h1>Motorista</h1>
-        <Formik
-            initialValues={initialValues}
-            onSubmit={handleSubmit}
-            render={DisplayDriverForm}
-        />
+
+        {console.log(id)}
+        {console.log(driver.name)}
+
+            {loading ?
+                <div className="loading-drivers">
+                    <Spin size="large" tip={
+                        id ? 'Buscando motorista...' : 'Preparando formulário...' } 
+                    />
+                </div>
+                :   
+                <Formik
+                    initialValues={initialValues}
+                    onSubmit={handleSubmit}
+                    render={DisplayDriverForm}
+                />
+            }
         </>
     );
 }
