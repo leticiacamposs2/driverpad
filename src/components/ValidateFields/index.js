@@ -6,10 +6,8 @@ export const validateDate = value => {
 
     if (!value) {
         errors = "* campo obrigatório";
-    } else if (
-        moment(value).format(dateFormat) < moment(Date.now()).format(dateFormat)
-    ) {
-        errors = "Informe uma data válida!";
+    } else {
+        moment(value).format(dateFormat) 
     }
 
     return errors;

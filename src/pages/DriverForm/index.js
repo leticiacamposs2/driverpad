@@ -58,7 +58,10 @@ const DriverForm = () => {
         id ?
             fetch(`/drivers/${id}`)
                 .then(res => res.json())
-                .then(res => setDriver(res))
+                .then(res => {
+                    res.birth = moment(res.birth, "DD/MM/YYYY")
+                    setDriver(res)
+                })
                 .catch(err => console.error(err, 'Nenhum motorista encontrado'))
                 .finally(() => setLoading(false))
         :
@@ -68,23 +71,19 @@ const DriverForm = () => {
     return(
         <>
         <h1>Motorista</h1>
-
-        {console.log(id)}
-        {console.log(driver.name)}
-
-            {loading ?
-                <div className="loading-drivers">
-                    <Spin size="large" tip={
-                        id ? 'Buscando motorista...' : 'Preparando formulário...' } 
-                    />
-                </div>
-                :   
-                <Formik
-                    initialValues={initialValues}
-                    onSubmit={handleSubmit}
-                    render={DisplayDriverForm}
+        {loading ?
+            <div className="loading-drivers">
+                <Spin size="large" tip={
+                    id ? 'Buscando motorista...' : 'Preparando formulário...' } 
                 />
-            }
+            </div>
+            :   
+            <Formik
+                initialValues={id ? driver : initialValues}
+                onSubmit={handleSubmit}
+                render={DisplayDriverForm}
+            />
+        }
         </>
     );
 }
