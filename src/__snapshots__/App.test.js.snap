@@ -1,0 +1,5 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App deve renderizar corretamente em modo "debug" 1`] = `ShallowWrapper {}`;
+
+exports[`App deve renderizar corretamente sem nenhum props 1`] = `ShallowWrapper {}`;
