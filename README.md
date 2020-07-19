@@ -76,10 +76,10 @@ PUT | /drivers/1 | Edita um motorista
 
 ----
 
-### Executando os testes unitários da aplicação
+### ⚙️ Executando os testes unitários da aplicação
 
 - No terminal na pasta driverpad execute o seguinte comando:
 
-````
+```
 npm run test -- --coverage --watchAll=false
 ```
