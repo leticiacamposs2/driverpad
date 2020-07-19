@@ -73,3 +73,13 @@ PUT | /drivers/1 | Edita um motorista
 
 - Consulte aqui em: [issues](https://github.com/leticiacamposs2/driverpad/issues) 
 - Planejamento no quadro: [kanban](https://github.com/leticiacamposs2/driverpad/projects/1)
+
+----
+
+### Executando os testes unitários da aplicação
+
+- No terminal na pasta driverpad execute o seguinte comando:
+
+````
+npm run test -- --coverage --watchAll=false
+```
