@@ -69,6 +69,16 @@
       "cpf": "45458458455",
       "active": true,
       "id": 7
+    },
+    {
+      "id": 8,
+      "name": "Jhonatan",
+      "phone": "(11) 2284-4587",
+      "birth": "02/07/1990",
+      "cnh": "45874587745",
+      "typeOfCnh": "C",
+      "cpf": "5458555554",
+      "active": true
     }
   ]
 }

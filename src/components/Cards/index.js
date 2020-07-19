@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, BrowserRouter } from 'react-router-dom';
-import { Card, Tag } from 'antd';
+import { Tooltip, Card, Tag } from 'antd';
 import { EditOutlined, UserAddOutlined } from '@ant-design/icons';
 import './styles.css';
 
@@ -14,10 +14,14 @@ const Cards = ({ id, name, phone, birth, cnh, typeOfCnh, cpf, active, color }) =
                     style={{ width: 300 }}
                     actions={[
                         <Link to={`/editar-motorista/${id}`}>
-                            <EditOutlined key="edit"/>
+                            <Tooltip placement="topLeft" title="Editar este cadastro">
+                                <EditOutlined key="edit"/>
+                            </Tooltip>
                         </Link>,
                         <Link to="/cadastro-de-motorista">
-                            <UserAddOutlined key="user"/>
+                            <Tooltip placement="topLeft" title="Novo cadastro">
+                                <UserAddOutlined key="user"/>
+                            </Tooltip>
                         </Link>
                     ]}>
                     <h1>{name}</h1>
