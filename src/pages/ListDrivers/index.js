@@ -8,7 +8,10 @@ const ListDrivers = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(`/drivers`)
+        const URL = window.location.hostname.includes('localhost')
+            ? 'http://localhost:8080/drivers'
+            : 'colocar aqui o link do heroku';
+        fetch(URL)
             .then(res => res.json())
             .then(res => setDrivers(res))
             .catch(err => console.error(err, 'Nenhum motorista encontrado'))

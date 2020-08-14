@@ -29,8 +29,12 @@ const DriverForm = () => {
 
         let type = '';
 
+        const URL = window.location.hostname.includes('localhost')
+            ? 'http://localhost:8080/drivers'
+            : 'colocar aqui o link do heroku';
+
         if(!id) {
-            fetch(`/drivers`, {
+            fetch(URL, {
                 method: "POST",
                 headers: {
                     Accept: "application/json",
@@ -51,7 +55,7 @@ const DriverForm = () => {
 
             type = 'cadastrado';
         } else {
-            fetch(`/drivers/${id}`, {
+            fetch(`${URL}/${id}`, {
                 method: "PUT",
                 headers: {
                     Accept: "application/json",
