@@ -31,7 +31,7 @@ const DriverForm = () => {
 
         const URL = window.location.hostname.includes('localhost')
             ? 'http://localhost:8080/drivers'
-            : 'colocar aqui o link do heroku';
+            : 'https://driverpad.herokuapp.com/drivers';
 
         if(!id) {
             fetch(URL, {

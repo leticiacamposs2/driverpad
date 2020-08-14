@@ -10,7 +10,7 @@ const ListDrivers = () => {
     useEffect(() => {
         const URL = window.location.hostname.includes('localhost')
             ? 'http://localhost:8080/drivers'
-            : 'colocar aqui o link do heroku';
+            : 'https://driverpad.herokuapp.com/drivers';
         fetch(URL)
             .then(res => res.json())
             .then(res => setDrivers(res))
